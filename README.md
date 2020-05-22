@@ -8,6 +8,9 @@ __READ THIS__: [Project V2Ray](http://www.v2ray.com).
 
 __YOU SHOULD READ V2RAY'S OFFICIAL INSTRUCTION BEFORE USING V2RAYX!__
 
+Other V2Ray clients on macOS: [V2RayU](https://github.com/yanue/v2rayu).
+(Not related to or endorsed by authors of this repo. USE AT YOUR OWN RISK.)
+
 ## Download V2RayX
 
 Download from [Releases](https://github.com/Cenmrev/V2RayX/releases). (compiled by [travis-ci.org](https://travis-ci.org/Cenmrev/V2RayX)).
@@ -37,6 +40,13 @@ V2RayX provides a GUI to generate the config file for V2Ray. It includes V2Ray's
 V2RayX also allows users to change system proxy settings and switch proxy servers on the macOS menu bar.
 
 As default, V2RayX will open a socks5 proxy at port `1081` as the main inbound, as well as a http proxy at port `8001` as an inboundDetour.
+
+V2RayX provide three modes:
+* Global Mode: V2RayX asks macOS to route all internet traffic to v2ray core if the network traffic obeys operating system's network rules.
+* PAC Mode: macOS will determine the routing based on a pac file and some traffic may be routed to v2ray core.
+* Manual Mode: V2RayX will not modify any macOS network settings, but only start or stop v2ray core.
+
+Options in menu list `Routing Rule` determine how v2ray core deals with incoming traffic. Core routing rules apply to all three modes above.
 
 ### auto-run on login
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,17 +14,19 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate">
             <connections>
-                <outlet property="editPacMenu" destination="3NY-51-bgh" id="dgA-Xq-mKn"/>
-                <outlet property="enabelV2rayItem" destination="I9I-uu-xak" id="b3P-ct-RqE"/>
+                <outlet property="authMenu" destination="vXy-mo-Nh0" id="AA1-I3-X0A"/>
+                <outlet property="editPacMenuItem" destination="3NY-51-bgh" id="dgA-Xq-mKn"/>
+                <outlet property="enableV2rayItem" destination="I9I-uu-xak" id="b3P-ct-RqE"/>
                 <outlet property="globalModeItem" destination="12u-76-Ytb" id="RA8-m2-Iv6"/>
                 <outlet property="manualModeItem" destination="P4q-kj-6fs" id="5XH-9p-w3e"/>
-                <outlet property="pacListMenu" destination="25R-TF-TBx" id="xGh-bJ-AGG"/>
+                <outlet property="pacListMenu" destination="yno-KX-HOj" id="qzq-pN-ala"/>
                 <outlet property="pacModeItem" destination="Cm9-3e-L2z" id="IvE-nJ-dW0"/>
-                <outlet property="pacsItem" destination="Cm9-3e-L2z" id="RVg-X8-RBp"/>
-                <outlet property="serverListMenu" destination="pPD-dn-4h0" id="6sH-L6-Uzx"/>
+                <outlet property="ruleSetMenuList" destination="8Ld-d4-m0U" id="DNS-66-cYT"/>
+                <outlet property="serverListMenu" destination="eqU-gH-G4L" id="unc-2a-DIW"/>
                 <outlet property="serversItem" destination="3wi-Co-2Kd" id="kKi-8l-dDJ"/>
                 <outlet property="statusBarMenu" destination="yZm-2L-r3v" id="3iW-vb-TOn"/>
-                <outlet property="stupidSepy" destination="lQU-65-XjU" id="hMg-f2-sa1"/>
+                <outlet property="updateServerItem" destination="C3a-eC-bFQ" id="3kY-g6-FNX"/>
+                <outlet property="upgradeMenuItem" destination="29h-Cl-9kt" id="Fk0-Xq-OK0"/>
                 <outlet property="v2rayRulesItem" destination="bUi-AV-IfA" id="p4V-ny-gh7"/>
                 <outlet property="v2rayStatusItem" destination="EFa-yl-fQC" id="z3V-zp-jw7"/>
             </connections>
@@ -170,8 +172,8 @@
                                     <action selector="paste:" target="-1" id="UvS-8e-Qdg"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Paste and Match Style" keyEquivalent="V" id="WeT-3V-zwk">
-                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                            <menuItem title="Paste and Match Style" keyEquivalent="v" id="WeT-3V-zwk">
+                                <modifierMask key="keyEquivalentModifierMask" shift="YES" option="YES" command="YES"/>
                                 <connections>
                                     <action selector="pasteAsPlainText:" target="-1" id="cEh-KX-wJQ"/>
                                 </connections>
@@ -678,54 +680,23 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="118" y="-2"/>
+            <point key="canvasLocation" x="308" y="-330"/>
         </menu>
         <menu id="yZm-2L-r3v">
             <items>
-                <menuItem title="Item 1" enabled="NO" id="EFa-yl-fQC">
+                <menuItem title="core status" enabled="NO" id="EFa-yl-fQC">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
-                <menuItem title="Item 2" id="I9I-uu-xak">
+                <menuItem title="load/unload core" id="I9I-uu-xak">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="enableProxy:" target="Voe-Tx-rLC" id="04r-lh-Ats"/>
+                        <action selector="didChangeStatus:" target="Voe-Tx-rLC" id="fLo-9H-9XD"/>
                     </connections>
                 </menuItem>
-                <menuItem isSeparatorItem="YES" id="Zce-eo-WsH"/>
-                <menuItem title="V2Ray Rules" id="bUi-AV-IfA">
+                <menuItem title="View current config.json..." id="C53-wG-wMg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="chooseV2rayRules:" target="Voe-Tx-rLC" id="D4f-2N-1Dq"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="PAC Mode" id="Cm9-3e-L2z">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="pac file" id="yno-KX-HOj"/>
-                    <connections>
-                        <action selector="choosePacMode:" target="Voe-Tx-rLC" id="0yC-jW-pRH"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Global Mode" id="12u-76-Ytb">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="chooseGlobalMode:" target="Voe-Tx-rLC" id="mRp-Df-8Ma"/>
-                    </connections>
-                </menuItem>
-                <menuItem title="Manual Mode" id="P4q-kj-6fs">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="chooseManualMode:" target="Voe-Tx-rLC" id="ELM-Qb-zRn"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="A8t-NG-v92"/>
-                <menuItem title="Servers" id="3wi-Co-2Kd">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Servers" id="eqU-gH-G4L"/>
-                </menuItem>
-                <menuItem title="Configure..." id="0hJ-Jo-rS2">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="showConfigWindow:" target="Voe-Tx-rLC" id="jVU-tA-mPz"/>
+                        <action selector="viewConfigJson:" target="Voe-Tx-rLC" id="8EX-Wb-G5H"/>
                     </connections>
                 </menuItem>
                 <menuItem title="View log" id="5Vg-qU-2V2">
@@ -734,10 +705,45 @@
                         <action selector="viewLog:" target="Voe-Tx-rLC" id="6j0-df-F3G"/>
                     </connections>
                 </menuItem>
-                <menuItem title="View current config.json" id="C53-wG-wMg">
+                <menuItem isSeparatorItem="YES" id="Zce-eo-WsH"/>
+                <menuItem title="PAC Mode" id="Cm9-3e-L2z">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="pac file" id="yno-KX-HOj"/>
+                    <connections>
+                        <action selector="didChangeMode:" target="Voe-Tx-rLC" id="1eE-WI-EUp"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Global Mode" id="12u-76-Ytb">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="viewConfigJson:" target="Voe-Tx-rLC" id="8EX-Wb-G5H"/>
+                        <action selector="didChangeMode:" target="Voe-Tx-rLC" id="yeL-Gb-C6p"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Manual Mode" id="P4q-kj-6fs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="didChangeMode:" target="Voe-Tx-rLC" id="jH0-sn-1XU"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="A8t-NG-v92"/>
+                <menuItem title="Server" id="3wi-Co-2Kd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Server" id="eqU-gH-G4L"/>
+                </menuItem>
+                <menuItem title="Routing Rule" id="bUi-AV-IfA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Routing Rule" id="8Ld-d4-m0U"/>
+                </menuItem>
+                <menuItem title="Configure..." id="0hJ-Jo-rS2">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="showConfigWindow:" target="Voe-Tx-rLC" id="jVU-tA-mPz"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Backup/Export" id="oZx-KW-OLs">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="backupConfigs:" target="Voe-Tx-rLC" id="gpZ-of-hI0"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="1ve-pA-4fu"/>
@@ -760,6 +766,12 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="YAD-DW-T91"/>
+                <menuItem title="Upgrade" id="29h-Cl-9kt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="openReleasePage:" target="Voe-Tx-rLC" id="gMF-8x-ynd"/>
+                    </connections>
+                </menuItem>
                 <menuItem title="Help" id="Yq1-i5-ecF">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -780,10 +792,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="76" y="221"/>
-        </menu>
-        <menu title="ServerList" id="pPD-dn-4h0">
-            <point key="canvasLocation" x="445" y="279.5"/>
+            <point key="canvasLocation" x="-152" y="-193"/>
         </menu>
         <menuItem title="Edit pac file" id="3NY-51-bgh">
             <modifierMask key="keyEquivalentModifierMask"/>
@@ -791,7 +800,28 @@
                 <action selector="editPac:" target="Voe-Tx-rLC" id="4jX-Hv-SpU"/>
             </connections>
         </menuItem>
-        <menuItem isSeparatorItem="YES" id="lQU-65-XjU"/>
-        <menu id="25R-TF-TBx" userLabel="Pac List Menu"/>
+        <menuItem title="Update subscription" id="C3a-eC-bFQ">
+            <modifierMask key="keyEquivalentModifierMask"/>
+            <connections>
+                <action selector="updateSubscriptions:" target="Voe-Tx-rLC" id="V21-6O-1ca"/>
+            </connections>
+        </menuItem>
+        <menu id="vXy-mo-Nh0">
+            <items>
+                <menuItem title="Input password..." id="h9O-kv-Vd7">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="inputPassword:" target="Voe-Tx-rLC" id="hYb-wG-V4T"/>
+                    </connections>
+                </menuItem>
+                <menuItem title="Quit" id="2N5-MP-9vf">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="terminate:" target="-1" id="xMQ-ZH-N94"/>
+                    </connections>
+                </menuItem>
+            </items>
+            <point key="canvasLocation" x="120" y="-141"/>
+        </menu>
     </objects>
 </document>
